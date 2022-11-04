@@ -1,0 +1,56 @@
+.login_body{
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color:aqua; */
+    background-image: url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    overflow: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.test{
+    background-color:white;
+    padding: 1rem 3rem;
+    padding-bottom: 2rem;
+    border-radius: 0.5rem;
+    border-top: rgb(80, 98, 255) 0.5rem solid;
+    box-shadow: 0px 5px 15px 5px #000000
+    
+  
+    
+}
+.form2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  
+  .formdiv2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+input {
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid gray;
+    font-size: 1.1rem;
+  }
+  .register_button{
+    background-color: rgb(80, 98, 255);
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 0.3rem;
+  }
+  /* span  {
+    text-decoration: none;
+    color: rgb(80, 98, 255);
+  } */

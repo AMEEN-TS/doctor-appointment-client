@@ -1,0 +1,11 @@
+.verified{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: #bec6d1; */
+    background-image: url("https://img.freepik.com/free-vector/clean-medical-background_53876-97927.jpg?w=996&t=st=1663679900~exp=1663680500~hmac=30a271c5de6857d69ff94bb2d60d4f8635acd53bc7504444c53814526b47ce64");
+}
