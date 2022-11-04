@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { hideLoading, showLoading } from "../Redux/alertsSlice";
+import { BaseUrl } from "../../utils/BaseUlr";
 
 function Login() {
  
@@ -27,7 +28,7 @@ function Login() {
       // toast.loading("Loading...");
       dispatch(showLoading());
      
-      const response = await axios.post("/api/user/login", userObj);
+      const response = await axios.post(`${BaseUrl}/api/user/login`, userObj);
       // toast.dismiss();
       dispatch(hideLoading());
       if (response.data.success) {
@@ -53,7 +54,7 @@ function Login() {
     }
     try {
       toast.loading();
-      const responses = await axios.post("/api/user/send-password-reset-link",emailobj
+      const responses = await axios.post(`${BaseUrl}/api/user/send-password-reset-link`,emailobj
         
       );
       toast.dismiss();

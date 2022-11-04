@@ -8,6 +8,7 @@ import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
 import Button from 'react-bootstrap/Button';
+import { BaseUrl } from "../../utils/BaseUlr";
 
 
 
@@ -20,7 +21,7 @@ function DoctorList() {
     const getDoctorsData = async () => {
         try {
             dispatch(showLoading());
-            const resposne = await axios.get("/api/admin/get-all-doctors", {
+            const resposne = await axios.get(`${BaseUrl}/api/admin/get-all-doctors`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("user")}`,
                 },
@@ -39,7 +40,7 @@ function DoctorList() {
         try {
             dispatch(showLoading());
             const resposne = await axios.post(
-                "/api/admin/change-doctor-account-status",
+                `${BaseUrl}/api/admin/change-doctor-account-status`,
                 { doctorId: record._id, userId: record.userId, status: status },
                 {
                     headers: {
@@ -126,7 +127,7 @@ function DoctorList() {
             dataIndex: "actions",
             render: (text, record) => (
                 <div className="d-flex">
-                    {record.status === "Pending" && (
+                    {record.status === "pending" && (
                         <h1
                             className="anchor"
                             onClick={() => changeDoctorStatus(record, "approved")}

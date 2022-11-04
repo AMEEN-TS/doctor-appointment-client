@@ -7,6 +7,7 @@ import { Table } from "antd";
 import moment from "moment";
 import Button from 'react-bootstrap/Button';
 import { toast } from 'react-hot-toast'
+import { BaseUrl } from '../../utils/BaseUlr';
 function UserList() {
 
     const [users, setUsers] = useState([]);
@@ -14,7 +15,7 @@ function UserList() {
     const getUsersData = async () => {
         try {
             dispatch(showLoading());
-            const resposne = await axios.get("/api/admin/get-all-users", {
+            const resposne = await axios.get(`${BaseUrl}/api/admin/get-all-users`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("user")}`,
                 },
@@ -32,7 +33,7 @@ function UserList() {
         try {
             dispatch(showLoading());
             const resposne = await axios.post(
-                "/api/admin/change-user-account-status",
+                `${BaseUrl}/api/admin/change-user-account-status`,
                 {  userid: record._id, status: status },
                 {
                     headers: {

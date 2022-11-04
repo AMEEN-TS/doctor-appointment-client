@@ -7,6 +7,7 @@ import axios from "axios";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography, MDBIcon } from 'mdb-react-ui-kit';
+import { BaseUrl } from '../../utils/BaseUlr';
 
 function DoctorHome() {
 
@@ -19,7 +20,7 @@ function DoctorHome() {
         try {
             dispatch(showLoading());
             const response = await axios.post(
-                "/api/doctor/get-doctor-info-by-id",
+                `${BaseUrl}/api/doctor/get-doctor-info-by-id`,
                 {
                     doctorId: params.doctorId,
                 },

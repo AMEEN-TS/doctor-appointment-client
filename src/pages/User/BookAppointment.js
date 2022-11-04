@@ -12,6 +12,7 @@ import axios from "axios";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import moment from "moment";
+import { BaseUrl } from "../../utils/BaseUlr";
 
 function BookAppointment() {
   const [isAvailable, setIsAvailable] = useState(false);
@@ -37,7 +38,7 @@ function BookAppointment() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/get-doctor-info-by-id",
+        `${BaseUrl}/api/doctor/get-doctor-info-by-id`,
         {
           doctorId: params.doctorId,
         },
@@ -78,7 +79,7 @@ console.log(startDate,"oooooooooooooooooooooooo")
       try {
         dispatch(showLoading());
         const response = await axios.post(
-          "/api/user/check-booking-avilability",
+          `${BaseUrl}/api/user/check-booking-avilability`,
           {
             doctorId: params.doctorId,
             // date: date,
@@ -113,7 +114,7 @@ console.log(startDate,"oooooooooooooooooooooooo")
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/book-appointment",
+        `${BaseUrl}/api/user/book-appointment`,
         {
           doctorId: params.doctorId,
           userId: user._id,

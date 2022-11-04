@@ -22,6 +22,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Badge from "@mui/material/Badge";
 import DrawerComp from "../pages/User/Drawer";
+import { BaseUrl } from "../utils/BaseUlr";
 
 function Navbar() {
 
@@ -112,7 +113,7 @@ function Navbar() {
     // toast.loading();
     try {
       const token = localStorage.getItem("user");
-      const response = await axios.get("/api/user/getuserinfo", {
+      const response = await axios.get(`${BaseUrl}/api/user/getuserinfo`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

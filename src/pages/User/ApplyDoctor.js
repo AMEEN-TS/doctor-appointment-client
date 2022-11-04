@@ -21,6 +21,7 @@ import {
 } from "@mui/material";
 
 import moment from "moment";
+import { BaseUrl } from "../../utils/BaseUlr";
 
 function ApplyDoctor() {
 
@@ -51,7 +52,7 @@ function ApplyDoctor() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/user/apply-doctor-account",
+        `${BaseUrl}/api/user/apply-doctor-account`,
           formdata,
           
         {

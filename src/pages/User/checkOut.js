@@ -17,6 +17,7 @@ import {
     MDBCardText
 } from "mdb-react-ui-kit";
 import Doctor from "../../components/Doctor";
+import { BaseUrl } from "../../utils/BaseUlr";
 
 export default function App() {
     const navigate = useNavigate()
@@ -41,7 +42,7 @@ export default function App() {
         try {
             dispatch(showLoading());
             const response = await axios.post(
-                "/api/user/get-appointment-details-by-id",
+                `${BaseUrl}/api/user/get-appointment-details-by-id`,
                 {
                     appointmentId: params.appointmentId,
                 },
@@ -77,7 +78,7 @@ export default function App() {
             order_id: data.id,
             handler: async (response) => {
                 try {
-                    const verifyUrl = "/api/user/verify";
+                    const verifyUrl = `${BaseUrl}/api/user/verify`;
                     const { data } = await axios.post(verifyUrl, response);
                     if (data.success) {
                         navigate('/')
@@ -105,7 +106,7 @@ export default function App() {
             try {
 
                 const { data } = await axios.post(
-                    "/api/user/checkout",
+                    `${BaseUrl}/api/user/checkout`,
                     {
                         appointmentId: params.appointmentId,
                         amount
@@ -131,7 +132,7 @@ export default function App() {
             dispatch(showLoading());
             try {
                 const response = await axios.post(
-                    "/api/user/cashpayment",
+                    `${BaseUrl}/api/user/cashpayment`,
                     {
                         appointmentId: params.appointmentId,
                     },

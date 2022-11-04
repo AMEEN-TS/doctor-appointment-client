@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { BaseUrl } from "../../utils/BaseUlr";
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import Card from "react-bootstrap/Card";
@@ -15,7 +16,7 @@ function VerifyEmail() {
   const verifyToken = async () => {
     try {
       toast.loading();
-      const response = await axios.post("/api/user/verifyemail", {
+      const response = await axios.post(`${BaseUrl}/api/user/verifyemail`, {
         token: params.token,
       });
       if (response.data.success) {
@@ -32,7 +33,7 @@ function VerifyEmail() {
 
   const deleteToken=async()=>{
     try{
-      const response = await axios.post("/api/user/deletetoken",{
+      const response = await axios.post(`${BaseUrl}/api/user/deletetoken`,{
         token: params.token,
       });
       if(response){

@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { hideLoading, showLoading } from "../Redux/alertsSlice";
+import { BaseUrl } from "../../utils/BaseUlr";
 // import { useNavigate } from "react-router-dom";
 
 function REgister() {
@@ -23,7 +24,7 @@ function REgister() {
       try {
         // toast.loading("Loading...");
         dispatch(showLoading());
-        const response = await axios.post("/api/user/register", data);
+        const response = await axios.post(`${BaseUrl}/api/user/register`, data);
         // navigate("/login");
         // toast.dismiss();
         dispatch(hideLoading());

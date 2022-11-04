@@ -36,6 +36,7 @@ import {
 } from "@ant-design/icons";
 import Paragraph from "antd/lib/typography/Paragraph";
 import toast from "react-hot-toast";
+import { BaseUrl } from "../utils/BaseUlr";
 
 
 
@@ -67,7 +68,7 @@ function Home() {
   const getData = async () => {
     try {
       dispatch(showLoading())
-      const response = await axios.get("/api/user/get-all-approved-doctors",
+      const response = await axios.get(`${BaseUrl}/api/user/get-all-approved-doctors`,
 
       );
       dispatch(hideLoading())
@@ -81,7 +82,7 @@ function Home() {
 
   const doctorPending = async () => {
     try {
-      const response = await axios.get("/api/admin/get-pending-doctor",
+      const response = await axios.get(`${BaseUrl}/api/admin/get-pending-doctor`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("user")}`,
@@ -102,7 +103,7 @@ function Home() {
 
   const doctorhome = async () =>{
     try{
-      const response = await axios.get("/api/doctor/doctorhome",
+      const response = await axios.get(`${BaseUrl}/api/doctor/doctorhome`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`,

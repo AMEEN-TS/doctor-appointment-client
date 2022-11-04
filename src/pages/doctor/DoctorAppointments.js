@@ -7,6 +7,7 @@ import moment from "moment";
 import { showLoading, hideLoading } from "../Redux/alertsSlice";
 import Navbar from "../../components/Navbar";
 import Button from "react-bootstrap/Button";
+import { BaseUrl } from "../../utils/BaseUlr";
 
 function DoctorAppointments() {
   const [appointments, setAppointments] = useState([]);
@@ -15,7 +16,7 @@ function DoctorAppointments() {
     try {
       dispatch(showLoading());
       const resposne = await axios.get(
-        "/api/doctor/get-appointments-by-doctor-id",
+        `${BaseUrl}/api/doctor/get-appointments-by-doctor-id`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("user")}`,
@@ -35,7 +36,7 @@ function DoctorAppointments() {
     try {
       dispatch(showLoading());
       const resposne = await axios.post(
-        "/api/doctor/change-appointment-status",
+        `${BaseUrl}/api/doctor/change-appointment-status`,
         { appointmentId: record._id, status: status },
         {
           headers: {

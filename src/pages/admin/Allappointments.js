@@ -6,6 +6,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { showLoading, hideLoading } from "../Redux/alertsSlice";
 import Button from "react-bootstrap/Button";
+import { BaseUrl } from "../../utils/BaseUlr";
 
 function Allappointments() {
   const [appointments, setAppointments] = useState();
@@ -14,7 +15,7 @@ function Allappointments() {
   const getAppointmentsData = async () => {
     try {
       dispatch(showLoading());
-      const response = await axios.get("/api/admin/get-all-appointmenst", {
+      const response = await axios.get(`${BaseUrl}/api/admin/get-all-appointmenst`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`,
         },

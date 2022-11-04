@@ -6,6 +6,7 @@ import { Table } from "antd";
 import moment from "moment";
 import { toast } from "react-hot-toast";
 import { showLoading, hideLoading } from "../Redux/alertsSlice";
+import { BaseUrl } from "../../utils/BaseUlr";
 
 
 function Appointments() {
@@ -16,7 +17,7 @@ function Appointments() {
     try {
       dispatch(showLoading());
       const resposne = await axios.get(
-        "/api/user/get-appointments-by-user-id",
+        `${BaseUrl}/api/user/get-appointments-by-user-id`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("user")}`,

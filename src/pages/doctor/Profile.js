@@ -20,6 +20,7 @@ import {
   FormLabel,
   getBottomNavigationActionUtilityClass,
 } from "@mui/material";
+import { BaseUrl } from '../../utils/BaseUlr';
 
 function Profile() {
 
@@ -53,7 +54,7 @@ function Profile() {
     try {
       dispatch(showLoading());
       const response = await axios.post(
-        "/api/doctor/doctorupdate-profile",
+        `${BaseUrl}/api/doctor/doctorupdate-profile`,
         formdata,
 
         {
@@ -80,7 +81,7 @@ function Profile() {
 
     try {
       dispatch(showLoading());
-      const response = await axios.post("/api/doctor/doctor-info",
+      const response = await axios.post(`${BaseUrl}/api/doctor/doctor-info`,
         {
           userId: params.userId,
         },

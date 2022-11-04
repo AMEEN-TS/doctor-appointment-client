@@ -9,6 +9,7 @@ import { Button } from 'antd';
 import { Tabs } from "antd";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BaseUrl } from '../../utils/BaseUlr';
 
 
 
@@ -23,7 +24,7 @@ function Notifications() {
     const markAllAsSeen = async () => {
         try {
             dispatch(showLoading());
-            const response = await axios.post("/api/user/mark-all-notifications-as-seen", { userId: user._id }, {
+            const response = await axios.post(`${BaseUrl}/api/user/mark-all-notifications-as-seen`, { userId: user._id }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("user")}`
                 }
@@ -44,7 +45,7 @@ function Notifications() {
     const deleteAll=async()=>{
         try {
             dispatch(showLoading());
-            const response = await axios.post("/api/user/delete-all-notifications", {userId : user._id} , {
+            const response = await axios.post(`${BaseUrl}/api/user/delete-all-notifications`, {userId : user._id} , {
                 headers: {
                     Authorization : `Bearer ${localStorage.getItem("user")}`
                 }

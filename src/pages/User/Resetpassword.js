@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { BaseUrl } from "../../utils/BaseUlr";
 
 function Resetpassword() {
   const Navigate = useNavigate();
@@ -21,7 +22,7 @@ function Resetpassword() {
       try {
         toast.loading("Loading...");
 console.log("sed");
-        const response = await axios.post("/api/user/reset-password", {
+        const response = await axios.post(`${BaseUrl}/api/user/reset-password`, {
           data,
           token: params.token,
         });
