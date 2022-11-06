@@ -51,9 +51,10 @@ function Home() {
   const [doctorapprovedcount, setdoctorapprovedcount] = useState([]);
   const [usercount, setusercount] = useState([]);
   const [appointmentcount, setappointmentcount] = useState([]);
-  const [doctorPendingappointments ,setDoctorPendingAppointments] = useState([]);
+  const [doctorPendingappointments, setDoctorPendingAppointments] = useState([]);
   const [doctorPendingappointmentscounts, setdoctorPendingappointmentscounts] = useState([]);
-  const [totalappointmentscount , settotalappoinmentscount] = useState([]);
+  const [totalappointmentscount, settotalappoinmentscount] = useState([]);
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -62,8 +63,10 @@ function Home() {
     doctorhome();
     getData();
     doctorPending();
-  },[]);
+   
+  }, []);
 
+  
 
   const getData = async () => {
     try {
@@ -74,6 +77,7 @@ function Home() {
       dispatch(hideLoading())
       if (response.data.success) {
         setDoctors(response.data.data);
+        console.log(response.data.data,"ggggggggggggggggggggg")
       }
     } catch (error) {
       dispatch(hideLoading())
@@ -101,27 +105,36 @@ function Home() {
     }
   };
 
-  const doctorhome = async () =>{
-    try{
+  const doctorhome = async () => {
+    try {
       const response = await axios.get(`${BaseUrl}/api/doctor/doctorhome`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("user")}`,
-        },
-      }
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("user")}`,
+          },
+        }
       );
-      if(response.data.success){
+      if (response.data.success) {
         setDoctorPendingAppointments(response.data.data);
         setdoctorPendingappointmentscounts(response.data.appointmentcount);
         settotalappoinmentscount(response.data.totalappointmentscount)
       }
-console.log(response.data.success);
-    }catch(error){
+      console.log(response.data.success);
+    } catch (error) {
 
     }
-  }
+  };
 
+  // const searchdoctors = async (event) =>{
+   
+  //   let key = event.target.value;
+    
   
+  //   const response = await axios.get(`${BaseUrl}/api/doctor/searchdoctors/${key}`)
+    
+  // }
+
+
   const columns = [
     {
       title: "Name",
@@ -241,7 +254,7 @@ console.log(response.data.success);
         </div>
       )
     },
-    
+
   ];
 
   const dollor = [
@@ -392,7 +405,7 @@ console.log(response.data.success);
     },
   ];
 
-
+  const keys=["firstName","specialization"]
   return (
     <>
       <div className="mainhome">
@@ -521,14 +534,14 @@ console.log(response.data.success);
 
               </div>
 
-              <div style={{ paddingTop: "50px",paddingBottom:"25px" }}>
+              <div style={{ paddingTop: "50px", paddingBottom: "25px" }}>
 
                 <Row gutter={[24, 0]}>
                   <Col xs={24} sm={24} md={12} lg={12} xl={10} className="mb-24">
-            <Card bordered={false} className="criclebox h-full">
-              
-            </Card>
-          </Col>
+                    <Card bordered={false} className="criclebox h-full">
+
+                    </Card>
+                  </Col>
                   <Col xs={24} sm={24} md={12} lg={12} xl={14} className="mb-24">
                     <Card bordered={false} className="criclebox h-full" style={{ borderRadius: 10 }}>
                       <h1 className="page-title" >Appointments </h1>
@@ -568,14 +581,29 @@ console.log(response.data.success);
                 <Carousel />
 
               </div>
-              <div className="container" style={{ paddingTop: "100px", paddingBottom: "10px" }}>
+              <div className="container homesearch">
+                <div className="search-div">
+                  <input type="" className="search-box" placeholder="Search..." onChange={(e)=>setQuery(e.target.value)}></input>
+                </div>
+
+              </div>
+              <div className="container" style={{ paddingTop: "50px", paddingBottom: "10px" }}>
 
                 <Row gutter={[30, 40]}>
-                  {doctors.map((doctor) => (
+                  
+                  {/* {doctors.map((doctor) => (
+                    <Col span={6} xs={24} sm={12} md={12} lg={8} xl={8}>
+                      <Doctor doctor={doctor} />
+                    </Col>
+                  ))} */}
+                  {doctors.filter((doctor) =>
+                  doctor.specialization.toLowerCase().includes(query) || doctor.firstName.toLowerCase().includes(query) 
+                  ).map((doctor) => (
                     <Col span={6} xs={24} sm={12} md={12} lg={8} xl={8}>
                       <Doctor doctor={doctor} />
                     </Col>
                   ))}
+                  
                 </Row>
 
               </div>
