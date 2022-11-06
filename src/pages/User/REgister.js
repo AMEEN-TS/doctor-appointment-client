@@ -22,7 +22,7 @@ function REgister() {
     console.log("Received", data.password);
     if (data.password === data.confirmpassword) {
       try {
-        // toast.loading("Loading...");
+        // toast.loading("Loading..."); 
         dispatch(showLoading());
         const response = await axios.post(`${BaseUrl}/api/user/register`, data);
         // navigate("/login");
