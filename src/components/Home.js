@@ -125,14 +125,7 @@ function Home() {
     }
   };
 
-  // const searchdoctors = async (event) =>{
-   
-  //   let key = event.target.value;
-    
   
-  //   const response = await axios.get(`${BaseUrl}/api/doctor/searchdoctors/${key}`)
-    
-  // }
 
 
   const columns = [
@@ -405,7 +398,7 @@ function Home() {
     },
   ];
 
-  const keys=["firstName","specialization"]
+ 
   return (
     <>
       <div className="mainhome">
