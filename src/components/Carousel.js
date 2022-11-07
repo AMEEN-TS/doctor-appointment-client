@@ -21,9 +21,9 @@ function CarouselFadeExample() {
         <Carousel.Item style={{height:"400px"}}>
           <img
             className="d-block w-100"
-            src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"
+            src="https://img.freepik.com/premium-photo/close-up-doctor-front-bright-background_53419-4416.jpg?w=1380"
             alt="Second slide"
-            // style={{objectFit:"cover",height:"350px"}}
+            style={{objectFit:"cover",height:"400px"}}
             
           />
   
