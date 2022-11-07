@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {setUser} from "../Redux/userSlice";
 import {
   Drawer,
   IconButton,
@@ -13,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 const DrawerComp = () => {
   const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
-
+  const { user } = useSelector((state) => state.user);
   return (
     <React.Fragment>
       <Drawer
@@ -29,12 +31,12 @@ const DrawerComp = () => {
           </ListItemButton>
           <ListItemButton>
             <ListItemIcon>
-              <ListItemText>Apply Doctor</ListItemText>
+              <ListItemText onClick={() => navigate("/apply-doctor")}>Apply Doctor</ListItemText>
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton>
             <ListItemIcon>
-              <ListItemText>Make an Appointment</ListItemText>
+              <ListItemText onClick={() => navigate("/appointments")}> Appointments</ListItemText>
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton>
@@ -42,6 +44,25 @@ const DrawerComp = () => {
               <ListItemText>Contact</ListItemText>
             </ListItemIcon>
           </ListItemButton>
+          {user == null ?( 
+              <ListItemButton>
+            
+              <ListItemIcon>
+                <ListItemText onClick={() => navigate("/login")}>Login</ListItemText>
+              </ListItemIcon>
+            </ListItemButton>
+              ):(
+                <ListItemButton>
+            
+                <ListItemIcon>
+                  <ListItemText onClick={() => {
+                          localStorage.clear();
+                          navigate("/login");
+                        }}>Logout</ListItemText>
+                </ListItemIcon>
+              </ListItemButton>
+              )}
+          
         </List>
       </Drawer>
       <IconButton
